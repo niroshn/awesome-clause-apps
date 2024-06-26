@@ -2,7 +2,7 @@
   "name": "claude-apps",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://niroshn.github.io/claude-apps",
+  "homepage": "https://niroshn.github.io/awesome-claude-apps",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

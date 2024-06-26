@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+interface File {
+  name: string;
+  type: 'react' | 'svg' | 'html';
+}
+
+const App: React.FC = () => {
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  const fileTypes: File[] = [
+    { name: 'example.tsx', type: 'react' },
+    { name: 'icon.svg', type: 'svg' },
+    { name: 'page.html', type: 'html' },
+  ];
+
+  const handleFileSelect = (file: File) => {
+    setSelectedFile(file);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>GitHub Pages React TypeScript App</h1>
+      <div>
+        <h2>Files:</h2>
+        <ul>
+          {fileTypes.map((file, index) => (
+            <li key={index} onClick={() => handleFileSelect(file)}>
+              {file.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h2>Preview:</h2>
+        {selectedFile ? (
+          <p>You selected: {selectedFile.name} ({selectedFile.type})</p>
+        ) : (
+          <p>Select a file to preview</p>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
